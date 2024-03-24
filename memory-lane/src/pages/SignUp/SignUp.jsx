@@ -69,7 +69,7 @@ function SignUp() {
         
           <p className="signUp__span">
             Already have an account?
-            <span className="signUp__link"> SIGN IN </span>
+            <Link to='/login' className="signUp__link"> LOGIN </Link>
           </p>
         </form>
       </main>
