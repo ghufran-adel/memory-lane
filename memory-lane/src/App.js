@@ -1,4 +1,5 @@
 import SignUp from "./pages/SignUp/SignUp";
+import'./App.scss' ;
 
 
 function App() {
