@@ -4,23 +4,22 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 function LogIn() {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
       const response = await axios.post("http://localhost:8080/api/login", {
         email: event.target.email.value,
-        password: event.target.password.value
+        password: event.target.password.value,
       });
-  
+
       sessionStorage.setItem("token", response.data.token);
-      console.log(response.data.token)
-      navigate("/profile");
+      console.log(response.data.token);
+      navigate("/Home");
     } catch (error) {
       setError(error.response.data);
     }
@@ -29,11 +28,11 @@ function LogIn() {
   return (
     <>
       <main>
-      <img
-            className="logIn__image"
-            src={`http://localhost:8080/images/curve.png`}
-            alt="baby"
-          />
+        <img
+          className="logIn__image"
+          src={`http://localhost:8080/images/curve.png`}
+          alt="baby"
+        />
         <div className="logIn__box">
           <h1 className="logIn__header">Welcome to Memory Lane,</h1>
           <h2 className="logIn__subheader">where every moment matters.</h2>
@@ -51,7 +50,7 @@ function LogIn() {
             placeholder="your email"
             name="email"
           />
-                 <label className="logIn__label">Password</label>
+          <label className="logIn__label">Password</label>
           <input
             type="password"
             className="logIn__input"
@@ -59,13 +58,16 @@ function LogIn() {
             name="password"
           />
           {error && <div className="logIn__message">{error.error}</div>}
-              <button className="logIn__btn" type="submit">
+          <button className="logIn__btn" type="submit">
             LOG IN
           </button>
-        
+
           <p className="logIn__span">
             DO NOT have an account?
-            <Link to ='/signup' className="logIn__link"> SIGN UP </Link>
+            <Link to="/signup" className="logIn__link">
+              {" "}
+              SIGN UP{" "}
+            </Link>
           </p>
         </form>
       </main>

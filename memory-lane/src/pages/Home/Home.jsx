@@ -1,10 +1,13 @@
+import "./Home.scss";
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+
 import Header from "../../component/Header/Header";
 import Profiles from "../../component/Profiles/Profiles";
-import "./DashBoard.scss";
 import Loading from "../../component/Loading/Loading";
+import LogIn from "../LogIn/LogIn";
 
 function DashBoard() {
   const [profiles, setProfiles] = useState([]);
@@ -41,27 +44,18 @@ function DashBoard() {
   useEffect(() => {
     getProfiles();
   }, []);
-  console.log(ProfileId);
 
   if (failedAuth) {
-    return (
-      <main className="dashboard">
-        <h1 className="dashboard__title">Dashboard</h1>
-        <p>You must be logged in to see this page.</p>
-        <p>
-          <Link to="/login">Log in</Link>
-        </p>
-      </main>
-    );
+    return <LogIn />;
   }
 
   if (isLoading) {
-    return <Loading />
+    return <Loading />;
   }
 
   return (
     <div>
-      <Header />
+      <Header setProfiles={setProfiles} setFailedAuth={setFailedAuth} />
       <Profiles profiles={profiles} setProfileId={setProfileId} />
     </div>
   );

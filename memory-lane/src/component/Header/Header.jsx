@@ -3,20 +3,28 @@ import { MdLogout } from "react-icons/md";
 import { IoIosNotifications } from "react-icons/io";
 import { NavLink } from 'react-router-dom';
 
-function Header() {
+function Header({ setProfiles, setFailedAuth }) {
+
+  const logout = () => {
+    console.log("clicked");
+    sessionStorage.removeItem("token");
+    setFailedAuth(true);
+    setProfiles(null);
+  };
+
   return (
     <header className='header'>
-    <nav className='nav'>
-        <NavLink >
-        <IoIosNotifications className='nav__logout'/>
+      <nav className='nav'>
+        {/* NavLink for Notifications */}
+        <NavLink to="/notifications">
+          <IoIosNotifications className='nav__notification' />
         </NavLink>
-        <NavLink>
-    <MdLogout className='nav__notification'/>  
-    </NavLink>
-    </nav>
-    <hr></hr>
+        {/* Icon for Logout */}
+        <MdLogout className='nav__logout' onClick={logout} />
+      </nav>
+      <hr />
     </header>
   )
 }
 
-export default Header
+export default Header;
