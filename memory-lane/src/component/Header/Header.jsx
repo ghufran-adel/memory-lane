@@ -6,7 +6,6 @@ import { NavLink } from 'react-router-dom';
 function Header({ setProfiles, setFailedAuth }) {
 
   const logout = () => {
-    console.log("clicked");
     sessionStorage.removeItem("token");
     setFailedAuth(true);
     setProfiles(null);

@@ -2,12 +2,12 @@ import "./Home.scss";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import Header from "../../component/Header/Header";
 import Profiles from "../../component/Profiles/Profiles";
 import Loading from "../../component/Loading/Loading";
-import LogIn from "../LogIn/LogIn";
+
 import MilestonesList from "../../component/MilestonesList/MilestonesList";
 import Footer from "../../component/Footer/Footer";
 
