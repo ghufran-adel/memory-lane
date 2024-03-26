@@ -2,11 +2,13 @@ import "./SignUp.scss";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 
 function SignUp() {
 
-
+  const navigate = useNavigate();
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
 
@@ -26,6 +28,10 @@ function SignUp() {
       setSuccess(false);
       setError(error.response.data);
     }
+  }
+
+  if(success){
+    navigate('/login')
   }
 
   return (

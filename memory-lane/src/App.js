@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import LogIn from "./pages/LogIn/LogIn";
 import AddProfile from "./pages/AddProfile/AddProfile";
 import DashBoard from "./pages/Home/Home";
+import OneMilestonPage from "./pages/OneMilestonPage/OneMilestonPage";
 
 
 function App() {
@@ -29,8 +30,14 @@ function App() {
 
 <Route
         exact
-        path="/profile"
+        path="/profiles"
         element={<AddProfile />}
+      />
+
+<Route
+        exact
+        path="/Milestones/:MilestoneID"
+        element={<OneMilestonPage />}
       />
 
       <Route path="*" element={<Navigate to="/" />} />

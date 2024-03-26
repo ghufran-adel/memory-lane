@@ -8,10 +8,11 @@ import Header from "../../component/Header/Header";
 import Profiles from "../../component/Profiles/Profiles";
 import Loading from "../../component/Loading/Loading";
 import LogIn from "../LogIn/LogIn";
+import MilestonesList from "../../component/MilestonesList/MilestonesList";
 
 function DashBoard() {
   const [profiles, setProfiles] = useState([]);
-  const [ProfileId, setProfileId] = useState(null);
+  const [profileId, setProfileId] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [failedAuth, setFailedAuth] = useState(false);
 
@@ -26,8 +27,8 @@ function DashBoard() {
       });
 
       if (response.data.length === 0) {
-        // No profiles found, navigate to home
-        navigate("/");
+        // No profiles found, navigate to Add profile
+        navigate("/profiles");
       } else {
         setProfiles(response.data);
         //   set the frist profile as the defult one
@@ -46,7 +47,8 @@ function DashBoard() {
   }, []);
 
   if (failedAuth) {
-    return <LogIn />;
+    navigate("/login");
+    return null;
   }
 
   if (isLoading) {
@@ -57,6 +59,7 @@ function DashBoard() {
     <div>
       <Header setProfiles={setProfiles} setFailedAuth={setFailedAuth} />
       <Profiles profiles={profiles} setProfileId={setProfileId} />
+      <MilestonesList profileId={profileId} />
     </div>
   );
 }
