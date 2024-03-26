@@ -12,6 +12,7 @@ function App() {
     <BrowserRouter>
     <Routes>
       <Route
+        exact
         path="/signUp"
         element={<SignUp />} 
       />
@@ -30,7 +31,7 @@ function App() {
 
 <Route
         exact
-        path="/profiles"
+        path="/settings"
         element={<AddProfile />}
       />
 
@@ -40,7 +41,7 @@ function App() {
         element={<OneMilestonPage />}
       />
 
-      <Route path="*" element={<Navigate to="/" />} />
+      {/* <Route path="*" element={<Navigate to="/" />} /> */}
     </Routes>
   </BrowserRouter>
   );

@@ -19,7 +19,7 @@ function LogIn() {
 
       sessionStorage.setItem("token", response.data.token);
       console.log(response.data.token);
-      navigate("/Home");
+      navigate("/");
     } catch (error) {
       setError(error.response.data);
     }

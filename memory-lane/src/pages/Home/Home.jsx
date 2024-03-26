@@ -9,6 +9,7 @@ import Profiles from "../../component/Profiles/Profiles";
 import Loading from "../../component/Loading/Loading";
 import LogIn from "../LogIn/LogIn";
 import MilestonesList from "../../component/MilestonesList/MilestonesList";
+import Footer from "../../component/Footer/Footer";
 
 function DashBoard() {
   const [profiles, setProfiles] = useState([]);
@@ -60,6 +61,7 @@ function DashBoard() {
       <Header setProfiles={setProfiles} setFailedAuth={setFailedAuth} />
       <Profiles profiles={profiles} setProfileId={setProfileId} />
       <MilestonesList profileId={profileId} />
+      <Footer />
     </div>
   );
 }
