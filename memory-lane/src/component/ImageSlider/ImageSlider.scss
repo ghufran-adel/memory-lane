@@ -1,0 +1,22 @@
+@use "../../styles/partials/variables" as *;
+
+.slide {
+
+    &__image {
+
+        width: 100%;
+    }
+
+    &__btn {
+        padding: 0;
+        background: none;
+        border: none;
+        color: $hover-color;
+    }
+
+    &__icon {
+        border-radius: 50%;
+        font-size: 30px;
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+}

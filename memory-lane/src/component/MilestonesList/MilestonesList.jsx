@@ -12,7 +12,7 @@ function MilestonesList({ profileId }) {
   const [isLoading, setIsLoading] = useState(true);
   const [failedAuth, setFailedAuth] = useState(false);
 
-  console.log(profileId);
+
   const navigate = useNavigate();
 
   const getMilestones = async () => {
@@ -46,17 +46,18 @@ function MilestonesList({ profileId }) {
   if (isLoading) {
     return <Loading />;
   }
-  console.log(milestones);
+
   return (
     <div>
       <section className="milestones">
-        {milestones.map((Milestone) => (
-          <Link to={`/Milestones/${Milestone.id}`} id={Milestone.id} key={Milestone.id} className="milestone__item">
+        {milestones.map((milestone) => (
+          
+          <Link to={`${profileId}/milestones/${milestone.id}`} key={milestone.id} className="milestone__item">
             <MilestonCard
-              title={Milestone.title}
-              description={Milestone.description}
-              media={Milestone.media}
-              date={Milestone.date}
+              title={milestone.title}
+              description={milestone.description}
+              media={milestone.media}
+              date={milestone.date}
             />
           </Link>
         ))}
