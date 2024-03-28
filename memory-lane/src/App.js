@@ -5,6 +5,7 @@ import LogIn from "./pages/LogIn/LogIn";
 import AddProfile from "./pages/AddProfile/AddProfile";
 import DashBoard from "./pages/Home/Home";
 import OneMilestonPage from "./pages/OneMilestonePage/OneMilestonePage";
+import AddMilestone from "./pages/AddMilestone/AddMilestone";
 
 
 function App() {
@@ -39,6 +40,12 @@ function App() {
         exact
         path="/:profileId/milestones/:milestoneId" 
         element={<OneMilestonPage />}
+      />
+
+<Route
+        exact
+        path="/:profileId/milestones/" 
+        element={<AddMilestone />}
       />
 
       {/* <Route path="*" element={<Navigate to="/" />} /> */}

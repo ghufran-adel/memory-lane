@@ -1,0 +1,304 @@
+// import React, { useState } from "react";
+// import axios from "axios";
+// import {
+//   GeoapifyGeocoderAutocomplete,
+//   GeoapifyContext,
+// } from "@geoapify/react-geocoder-autocomplete";
+// import "@geoapify/geocoder-autocomplete/styles/minimal.css";
+
+// function AddMilestone() {
+//   const [formData, setFormData] = useState({
+//     title: "",
+//     date: "",
+//     media: [],
+//     address: "ADDRESS",
+//     latitude: null,
+//     longitude: null,
+//     description: "",
+//   });
+
+//   const handleChange = (event) => {
+//     const { name, value } = event.target;
+//     setFormData({
+//       ...formData,
+//       [name]: value,
+//     });
+//   };
+
+//   const handleImageChange = (event) => {
+//     setFormData({
+//       ...formData,
+//       media: event.target.files,
+//     });
+//   };
+
+//   const handleSubmit = async (event) => {
+//     event.preventDefault();
+
+//     const token = sessionStorage.getItem("token");
+
+//     const formDataToSend = new FormData();
+//     formDataToSend.append("title", formData.title);
+//     formDataToSend.append("date", formData.date);
+//     formDataToSend.append("address", formData.address);
+//     formDataToSend.append("latitude", formData.latitude);
+//     formDataToSend.append("longitude", formData.longitude);
+//     for (let i = 0; i < formData.media.length; i++) {
+//       formDataToSend.append("media", formData.media[i]);
+//     }
+
+//     try {
+//       const response = await axios.post("http://localhost:8080/api/milstones/1", formDataToSend, {
+//         headers: {
+//           "Content-Type": "multipart/form-data",
+//            "Authorization": `Bearer ${token}`
+//         },
+//       });
+//       console.log("Response from backend:", response.data);
+//     } catch (error) {
+//       console.error("Error submitting milestone:", error);
+//     }
+//   };
+
+// //   const autocomplete = new GeocoderAutocomplete(...);
+// //   autocomplete.setValue(value);
+
+// // const displayValue = autocomplete.getValue();
+   
+// const [value,setValue]=useState("")
+
+// function onPlaceSelect(event) {
+//   setValue(event.target.value);
+//   };
+// console.log(value);
+
+// async function onSuggestionChange(value) {
+//   try {
+//     console.log("hello")
+//     const response = await fetch(
+//       `https://api.geoapify.com/v1/geocode/autocomplete?text=${value}&apiKey=e0147c44f5d54a32ba89406c81166921`
+//     );
+//     const data = await response.json();
+//     console.log(data);
+//     // if (data.features && data.features.length > 0) {
+//     //   const { lat, lon } = data.features[0].properties;
+//     //   setFormData({
+//     //     ...formData,
+//     //     coordinates: { latitude: lat, longitude: lon },
+//     //   });
+//     // }
+//   } catch (error) {
+//     console.error("Error fetching coordinates:", error);
+//   }
+// }
+ 
+
+
+
+//   return (
+//     <div>
+//       <h2>Submit Milestone</h2>
+//       <form onSubmit={handleSubmit}>
+//       <GeoapifyContext apiKey="e0147c44f5d54a32ba89406c81166921">
+//       <GeoapifyGeocoderAutocomplete placeholder="Enter address here"
+//         // type={type}
+//         // lang={language}
+//         // position={position}
+//         // countryCodes={countryCodes}
+//         // limit={limit}
+//           // value="none"
+//         // onInputChange={(e)=>{console.log(e)}}
+//         placeSelect={onPlaceSelect}
+//         suggestionsChange={onSuggestionChange}
+//         />
+//     </GeoapifyContext>
+//         <label htmlFor="title">Title:</label>
+//         <br />
+//         <input
+//           type="text"
+//           id="title"
+//           name="title"
+//           value={formData.title}
+//           onChange={handleChange}
+//           required
+//         />
+//         <br />
+//         <br />
+
+//         <label htmlFor="date">Date:</label>
+//         <br />
+//         <input
+//           type="date"
+//           id="date"
+//           name="date"
+//           value={formData.date}
+//           onChange={handleChange}
+//           required
+//         />
+//         <br />
+//         <br />
+
+//         <label htmlFor="images">Images:</label>
+//         <br />
+//         <input
+//           type="file"
+//           id="images"
+//           onChange={handleImageChange}
+//           accept="image/*"
+//           multiple
+//         />
+//         <br />
+//         <br />
+
+//         <label htmlFor="description">Description:</label>
+//         <br />
+//         <input
+//           type="text"
+//           id="description"
+//           name="description"
+//           value={formData.description}
+//           onChange={handleChange}
+//         />
+//         <br />
+//         <br />
+
+//         <button type="submit">Submit</button>
+//       </form>
+//     </div>
+//   );
+// }
+
+// export default AddMilestone;
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+// import React, { useState } from "react";
+// import axios from "axios";
+// import {
+//   GeoapifyGeocoderAutocomplete,
+//   GeoapifyContext,
+// } from "@geoapify/react-geocoder-autocomplete";
+// import "@geoapify/geocoder-autocomplete/styles/minimal.css";
+
+// function AddMilestone() {
+//   const [formData, setFormData] = useState({
+//     title: "",
+//     date: "",
+//     media: [],
+//     address: "ADDRESS",
+//     latitude: -118.243700,
+//     longitude: 34.052200,
+//     description: "",
+//   });
+
+//   const handleChange = (event) => {
+//     const { name, value } = event.target;
+//     setFormData({
+//       ...formData,
+//       [name]: value,
+//     });
+//   };
+
+//   const handleImageChange = (event) => {
+//     setFormData({
+//       ...formData,
+//       media: event.target.files,
+//     });
+//   };
+
+//   const handleSubmit = async (event) => {
+//     event.preventDefault();
+
+//     const token = sessionStorage.getItem("token");
+
+//     const formDataToSend = new FormData();
+//     formDataToSend.append("title", formData.title);
+//     formDataToSend.append("date", formData.date);
+//     formDataToSend.append("address", formData.address);
+//     formDataToSend.append("latitude", formData.latitude);
+//     formDataToSend.append("longitude", formData.longitude);
+//     formDataToSend.append("description", formData.description);
+//     for (let i = 0; i < formData.media.length; i++) {
+//       formDataToSend.append("media", formData.media[i]);
+//     }
+
+//     try {
+//       const response = await axios.post("http://localhost:8080/api/milstones/1", formDataToSend, {
+//         headers: {
+//           "Content-Type": "multipart/form-data",
+//            "Authorization": `Bearer ${token}`
+//         },
+//       });
+//       console.log("Response from backend:", response.data);
+//     } catch (error) {
+//       console.error("Error submitting milestone:", error);
+//     }
+//   };
+
+ 
+
+
+
+//   return (
+//     <div>
+//       <h2>Submit Milestone</h2>
+//       <form onSubmit={handleSubmit}>
+//         <label htmlFor="title">Title:</label>
+//         <br />
+//         <input
+//           type="text"
+//           id="title"
+//           name="title"
+//           value={formData.title}
+//           onChange={handleChange}
+//           required
+//         />
+//         <br />
+//         <br />
+
+//         <label htmlFor="date">Date:</label>
+//         <br />
+//         <input
+//           type="date"
+//           id="date"
+//           name="date"
+//           value={formData.date}
+//           onChange={handleChange}
+//           required
+//         />
+//         <br />
+//         <br />
+
+//         <label htmlFor="images">Images:</label>
+//         <br />
+//         <input
+//           type="file"
+//           id="images"
+//           onChange={handleImageChange}
+//           accept="image/*"
+//           multiple
+//         />
+//         <br />
+//         <br />
+
+//         <label htmlFor="description">Description:</label>
+//         <br />
+//         <input
+//           type="text"
+//           id="description"
+//           name="description"
+//           value={formData.description}
+//           onChange={handleChange}
+//         />
+//         <br />
+//         <br />
+
+//         <button type="submit">Submit</button>
+//       </form>
+//     </div>
+//   );
+// }
+
+// export default AddMilestone;
