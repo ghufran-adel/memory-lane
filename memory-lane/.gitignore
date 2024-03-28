@@ -29,3 +29,5 @@ yarn-error.log*
 ./src/component/*css.map
 ./src/App.css
 ./src/App.css.map
+
+.env
