@@ -45,7 +45,7 @@ function App() {
 <Route
         exact
         path="/:profileId/milestones/" 
-        element={<AddMilestone />}
+        element={<AddMilestone/>}
       />
 
       {/* <Route path="*" element={<Navigate to="/" />} /> */}
