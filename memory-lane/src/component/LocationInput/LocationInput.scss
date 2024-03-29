@@ -1,0 +1,40 @@
+@use "../../styles/partials/variables" as *;
+
+
+.location-search-input {
+    padding: 0.5rem;
+    margin: 4px 0px 0px 0px;
+    border: solid 1px $hover-color;
+    border-radius: 10px;
+    width: 100%;
+
+    &:focus {
+        outline: none;
+        border: 1px solid $btn-color;
+    }
+}
+
+.autocomplete-dropdown-container {
+    position: absolute;
+    margin: 0 auto;
+    z-index: 1;
+    background-color: #fff;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.suggestion-item {
+    color: $hero-text-color;
+    font-size: 13px;
+    padding: 10px;
+    border-bottom: 1px solid rgb(187, 187, 187);
+    width: 100%;
+
+    &--active {
+        color: $hover-color;
+        font-size: 13px;
+        padding: 10px;
+        border-bottom: 1px solid rgb(187, 187, 187);
+        width: 100%;
+    }
+}

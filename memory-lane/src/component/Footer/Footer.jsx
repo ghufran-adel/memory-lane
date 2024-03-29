@@ -7,7 +7,7 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { FaChartLine } from "react-icons/fa6";
 import { MdOutlineMailOutline } from "react-icons/md";
 
-function Footer() {
+function Footer({profileId}) {
 
     const isActive = (path) => {
         return window.location.pathname === path ? 'footer__active' : 'footer__link';
@@ -21,7 +21,7 @@ function Footer() {
       <Link to="/" className={ isActive("/") }>
         <BiHome className=' footer__icon' />
       </Link>
-      <Link to="/milestones" className={ isActive("/milestones") } >
+      <Link to={`${profileId}/milestones`} className={ isActive("/milestones") } >
         <IoAddCircleOutline className=' footer__icon footer__icon--add'/>
       </Link>
       <Link to="/settings" className={ isActive("/settings") } >

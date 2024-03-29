@@ -1,14 +1,25 @@
+import "./AddMilestone.scss";
+
 import React, { useState } from "react";
 import axios from "axios";
+import { useParams, useNavigate } from "react-router-dom";
+
 import LocationInput from "../../component/LocationInput/LocationInput";
+import { MdError } from "react-icons/md";
 
 function AddMilestone() {
+  const { profileId } = useParams();
+
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     title: "",
     date: "",
     media: [],
     description: "",
   });
+
+  const [error, setError] = useState({}); //to validate form
 
   // states to store data comping from auto complete input
   const [location, setlocation] = useState("");
@@ -32,11 +43,48 @@ function AddMilestone() {
     });
   };
 
+  // check form validation
+  const isFormValid = () => {
+    let isValid = true;
+    const errors = {};
+
+    if (!formData.title || formData.title === "") {
+      errors.title = "This field is required";
+      isValid = false;
+    }
+
+    if (!location || location === "") {
+      errors.location = "This field is required";
+      isValid = false;
+    }
+
+    if (!formData.date || formData.date === "") {
+      errors.date = "This field is required";
+      isValid = false;
+    }
+
+    if (!formData.description) {
+      errors.description = "This field is required";
+      isValid = false;
+    }
+    if (!formData.media || formData.media.length === 0) {
+      errors.media = "This field is required";
+      isValid = false;
+    }
+
+    // Update the error state
+    setError(errors);
+
+    return isValid;
+  };
+
+  // post request for new milstone
   const handleSubmit = async (event) => {
     event.preventDefault();
+    isFormValid();
 
     const token = sessionStorage.getItem("token");
-    
+
     // create form data to store files and values
     const formDataToSend = new FormData();
     formDataToSend.append("title", formData.title);
@@ -51,7 +99,7 @@ function AddMilestone() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/milstones/1",
+        `http://localhost:8080/api/milstones/${profileId}`,
         formDataToSend,
         {
           headers: {
@@ -61,9 +109,9 @@ function AddMilestone() {
         }
       );
       console.log(response.data);
-      // clear form after submit
-      setFormData("");
-      setlocation("");
+
+      // redirect to home
+      navigate("/");
     } catch (error) {
       console.error("Error submitting milestone:", error);
     }
@@ -71,65 +119,109 @@ function AddMilestone() {
 
   return (
     <div>
-      <h2>Create New Milestone</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="title">Title</label>
+
+      <h1 className="add-title">Capture New Memory</h1>
+      <form onSubmit={handleSubmit} className="add-form">
+        <label className="add-form__label" htmlFor="title">
+          Title
+        </label>
 
         <input
+          className="add-form__input"
           type="text"
           id="title"
           name="title"
+          placeholder="title"
           value={formData.title}
           onChange={handleChange}
-          required
         />
-        <br />
-        <br />
+        {error.title && (
+          <p className="add-form__input--error">
+            <MdError />
+            {error.title}
+          </p>
+        )}
 
-        <label htmlFor="description">Description:</label>
-        <br />
-        <input
-          type="text"
-          id="description"
-          name="description"
-          value={formData.description}
-          onChange={handleChange}
-        />
-        <br />
-        <br />
+        <label
+          className="add-form__label add-form__label--upload"
+          htmlFor="images"
+        >
+          Upload
+        </label>
 
-        <label htmlFor="date">Date:</label>
-        <br />
         <input
-          type="date"
-          id="date"
-          name="date"
-          value={formData.date}
-          onChange={handleChange}
-          required
-        />
-        <br />
-        <br />
-        <LocationInput
-          setlocation={setlocation}
-          setlatitude={setlatitude}
-          setlongitude={setlongitude}
-          location={location}
-        />
-        <label htmlFor="images">Images:</label>
-        <br />
-        <input
+          className="add-form__input add-form__input--file"
           type="file"
           id="images"
           onChange={handleImageChange}
           accept="image/*"
           multiple
         />
-        <br />
-        <br />
+        {error.media && (
+          <p className="add-form__input--error">
+            <MdError />
+            {error.media}
+          </p>
+        )}
 
-        <button type="submit">Submit</button>
+        <label className="add-form__label" htmlFor="description">
+          Description
+        </label>
+        <input
+          className="add-form__input"
+          type="text"
+          id="description"
+          name="description"
+          placeholder="add more for this great moment"
+          value={formData.description}
+          onChange={handleChange}
+        />
+        {error.description && (
+          <p className="add-form__input--error">
+            <MdError />
+            {error.description}
+          </p>
+        )}
+
+        <label className="add-form__label" htmlFor="date">
+          Date
+        </label>
+        <input
+          className="add-form__input"
+          type="date"
+          id="date"
+          name="date"
+          value={formData.date}
+          onChange={handleChange}
+        />
+        {error.date && (
+          <p className="add-form__input--error">
+            <MdError />
+            {error.date}
+          </p>
+        )}
+
+        <label className="add-form__label" htmlFor="Location">
+          Location
+        </label>
+        <LocationInput
+          className="add-form__input"
+          setlocation={setlocation}
+          setlatitude={setlatitude}
+          setlongitude={setlongitude}
+          location={location}
+        />
+        {error.location && (
+          <p className="add-form__input--error">
+            <MdError />
+            {error.location}
+          </p>
+        )}
+        <button className="add-form__btn" type="submit">
+          CREATE
+        </button>
       </form>
+
     </div>
   );
 }

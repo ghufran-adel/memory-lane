@@ -2,7 +2,8 @@ import "./Home.scss";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate  } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 import Header from "../../component/Header/Header";
 import Profiles from "../../component/Profiles/Profiles";
@@ -48,8 +49,7 @@ function DashBoard() {
   }, []);
 
   if (failedAuth) {
-    navigate("/login");
-    return null;
+    return <Navigate to="/logIn" />;
   }
 
   if (isLoading) {
@@ -61,7 +61,7 @@ function DashBoard() {
       <Header setProfiles={setProfiles} setFailedAuth={setFailedAuth} />
       <Profiles profiles={profiles} setProfileId={setProfileId} />
       <MilestonesList profileId={profileId} />
-      <Footer />
+      <Footer profileId={profileId} />
     </div>
   );
 }
