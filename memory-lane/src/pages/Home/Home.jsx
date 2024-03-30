@@ -2,17 +2,13 @@ import "./Home.scss";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate  } from "react-router-dom";
-import { Navigate } from "react-router-dom";
+import { useNavigate, Outlet, Navigate } from "react-router-dom";
 
 import Profiles from "../../component/Profiles/Profiles";
 import Loading from "../../component/Loading/Loading";
 
-import MilestonesList from "../../component/MilestonesList/MilestonesList";
-
-
-function DashBoard({profiles ,setProfiles , profileId ,setProfileId }) {
-
+function DashBoard() {
+  const [profiles, setProfiles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [failedAuth, setFailedAuth] = useState(false);
 
@@ -31,8 +27,8 @@ function DashBoard({profiles ,setProfiles , profileId ,setProfileId }) {
         navigate("/settings");
       } else {
         setProfiles(response.data);
-        //   set the frist profile as the defult one
-        setProfileId(response.data[0].id);
+        // set the frist profile as the defult one
+        navigate(`/${response.data[0].id}`);
       }
     } catch (error) {
       console.error(error);
@@ -55,10 +51,11 @@ function DashBoard({profiles ,setProfiles , profileId ,setProfileId }) {
   }
 
   return (
-    <div>
-      <Profiles profiles={profiles} setProfileId={setProfileId} />
-      <MilestonesList profileId={profileId} />
-    </div>
+    <main className="home">
+      <Profiles profiles={profiles} />
+      {/* nest route to get the milestones list here */}
+      <Outlet />
+    </main>
   );
 }
 

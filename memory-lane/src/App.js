@@ -1,47 +1,26 @@
-import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+
 import SignUp from "./pages/SignUp/SignUp";
 import LogIn from "./pages/LogIn/LogIn";
-import AddProfile from "./pages/AddProfile/AddProfile";
 import DashBoard from "./pages/Home/Home";
 import OneMilestonPage from "./pages/OneMilestonePage/OneMilestonePage";
 import AddMilestone from "./pages/AddMilestone/AddMilestone";
 import Layout from "./component/Layout/Layout";
-
-import { useState } from "react";
+import Settings from "./pages/Settings/Settings";
+import MilestonesList from "./component/MilestonesList/MilestonesList";
 
 function App() {
-  const [profiles, setProfiles] = useState([]);
-  const [profileId, setProfileId] = useState(null);
-
   return (
     <BrowserRouter>
       <Routes>
         <Route exact path="/signUp" element={<SignUp />} />
         <Route exact path="/logIn" element={<LogIn />} />
-        <Route
-          element={
-            <Layout
-              profiles={profiles}
-              setProfiles={setProfiles}
-              setProfileId={setProfileId}
-              profileId={profileId}
-            />
-          }
-        >
-          <Route
-            exact
-            path="/"
-            element={
-              <DashBoard
-                profiles={profiles}
-                setProfiles={setProfiles}
-                setProfileId={setProfileId}
-                profileId={profileId}
-              />
-            }
-          />
-          <Route exact path="/settings" element={<AddProfile />} />
+        <Route element={<Layout />}>
+          <Route exact path="/" element={<DashBoard />}>
+            <Route exact path="/:profileId" element={<MilestonesList />} />
+          </Route>
+          <Route exact path="/settings" element={<Settings />} />
           <Route
             exact
             path="/:profileId/milestones/:milestoneId"
@@ -49,7 +28,7 @@ function App() {
           />
           <Route
             exact
-            path="/:profileId/milestones/"
+            path="/:profileId/milestones"
             element={<AddMilestone />}
           />
         </Route>

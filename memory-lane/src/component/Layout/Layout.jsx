@@ -4,14 +4,14 @@ import "./Layout.scss";
 import { Outlet } from "react-router";
 
 
-const Layout = ({setProfiles,setFailedAuth,profileId}) => {
+const Layout = () => {
 
   return (
     <div className="layout">
-      <Header setProfiles={setProfiles} setFailedAuth={setFailedAuth} />
+      <Header/>
       <Outlet
       />
-      <Footer profileId={profileId} />
+      <Footer />
     </div>
   );
 };

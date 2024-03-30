@@ -2,16 +2,17 @@ import './MilestonesList.scss';
 
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate ,useParams } from "react-router-dom";
 
 import Loading from "../../component/Loading/Loading";
 import MilestonCard from "../MilestonCard/MilestonCard";
 
-function MilestonesList({ profileId}) {
+function MilestonesList() {
   const [milestones, setMilestones] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [failedAuth, setFailedAuth] = useState(false);
 
+  const { profileId } = useParams();
 
   const navigate = useNavigate();
 
@@ -52,7 +53,7 @@ function MilestonesList({ profileId}) {
       <section className="milestones">
         {milestones.map((milestone) => (
           
-          <Link to={`${profileId}/milestones/${milestone.id}`} key={milestone.id} className="milestone__item">
+          <Link to={`milestones/${milestone.id}`} key={milestone.id} className="milestone__item">
             <MilestonCard
               title={milestone.title}
               description={milestone.description}
