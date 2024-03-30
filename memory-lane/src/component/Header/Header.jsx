@@ -1,14 +1,14 @@
 import './Header.scss';
 import { MdLogout } from "react-icons/md";
 import { IoIosNotifications } from "react-icons/io";
-import { NavLink } from 'react-router-dom';
+import { NavLink ,useNavigate } from 'react-router-dom';
 
-function Header({ setProfiles, setFailedAuth }) {
+function Header() {
+  const navigate = useNavigate();
 
   const logout = () => {
     sessionStorage.removeItem("token");
-    setFailedAuth(true);
-    setProfiles(null);
+    navigate("/login");
   };
 
   return (

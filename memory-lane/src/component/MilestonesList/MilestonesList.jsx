@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Loading from "../../component/Loading/Loading";
 import MilestonCard from "../MilestonCard/MilestonCard";
 
-function MilestonesList({ profileId }) {
+function MilestonesList({ profileId}) {
   const [milestones, setMilestones] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [failedAuth, setFailedAuth] = useState(false);

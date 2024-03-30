@@ -1,12 +1,13 @@
 import "./LogIn.scss";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , Link } from "react-router-dom";
 
 function LogIn() {
+
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -20,11 +21,13 @@ function LogIn() {
       sessionStorage.setItem("token", response.data.token);
       console.log(response.data.token);
       navigate("/");
+     
     } catch (error) {
       setError(error.response.data);
     }
   };
 
+  
   return (
     <>
       <main>

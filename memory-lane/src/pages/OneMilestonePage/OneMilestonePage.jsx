@@ -2,7 +2,7 @@ import "./OneMilestonePage.scss";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 import ImageSlider from "../../component/ImageSlider/ImageSlider";
 import Loading from "../../component/Loading/Loading";
@@ -17,11 +17,9 @@ function OneMilestonPage() {
 
   // state to hold all the details of the milestone
   const [milestoneDetails, setMilestoneDetails] = useState(null);
+  const [showMap, setShowMap] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [failedAuth, setFailedAuth] = useState(false);
-
-  const [showMap, setShowMap] = useState(false);
-
   const toggleMap = () => {
     setShowMap(!showMap);
   };
@@ -29,7 +27,7 @@ function OneMilestonPage() {
   // add params to target one milestone
   const { profileId, milestoneId } = useParams();
 
-  const navigate = useNavigate();
+
 
   const getMilestoneDetails = async () => {
     const token = sessionStorage.getItem("token");
@@ -55,8 +53,8 @@ function OneMilestonPage() {
   }, [profileId, milestoneId]);
 
   if (failedAuth) {
-    navigate("/login");
-    return null;
+    return <Navigate to="/logIn" />;
+
   }
 
   if (isLoading) {

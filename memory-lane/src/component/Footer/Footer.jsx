@@ -1,6 +1,6 @@
 
 import './Footer.scss';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { IoAddCircleOutline } from "react-icons/io5";
 import { BiHome } from "react-icons/bi";
 import { IoSettingsOutline } from "react-icons/io5";
@@ -9,28 +9,28 @@ import { MdOutlineMailOutline } from "react-icons/md";
 
 function Footer({profileId}) {
 
-    const isActive = (path) => {
-        return window.location.pathname === path ? 'footer__active' : 'footer__link';
-      };
+    // const isActive = (path) => {
+    //     return window.location.pathname === path ? 'footer__active' : 'footer__link';
+    //   };
 
   return (
     <footer className='footer'>
-      <Link to="/contact-us" className={ isActive("/contact-us") } >
-        <MdOutlineMailOutline className=' footer__icon' />
-      </Link>
-      <Link to="/" className={ isActive("/") }>
-        <BiHome className=' footer__icon' />
-      </Link>
-      <Link to={`${profileId}/milestones`} className={ isActive("/milestones") } >
-        <IoAddCircleOutline className=' footer__icon footer__icon--add'/>
-      </Link>
-      <Link to="/settings" className={ isActive("/settings") } >
-        <IoSettingsOutline className=' footer__icon' />
-      </Link>
-      <Link to="/charts" className={ isActive("/charts") } >
-        <FaChartLine className=' footer__icon--chart' />
-      </Link>
-    </footer>
+    <NavLink to="/contact-us" className='footer__link' >
+      <MdOutlineMailOutline className=' footer__icon' />
+    </NavLink>
+    <NavLink to="/" className='footer__link' >
+      <BiHome className=' footer__icon ' />
+    </NavLink>
+    <NavLink to={`${profileId}/milestones`} className='footer__link'>
+      <IoAddCircleOutline className=' footer__icon footer__icon--add' />
+    </NavLink>
+    <NavLink to="/settings" className='footer__link'>
+      <IoSettingsOutline className=' footer__icon' />
+    </NavLink>
+    <NavLink to="/charts" className='footer__link' >
+      <FaChartLine className=' footer__icon--chart' />
+    </NavLink>
+  </footer>
   );
 }
 

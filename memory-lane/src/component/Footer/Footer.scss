@@ -25,10 +25,10 @@
 
     &__link {
         color: $primary-text-color;
+        &.active{
+            color: $btn-color;
+            border-bottom: 1px solid $btn-color;
+        }
     }
 
-    &__active {
-        color: $btn-color;
-        border-bottom: 1px solid $btn-color;
-    }
 }

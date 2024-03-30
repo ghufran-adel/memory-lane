@@ -5,16 +5,14 @@ import axios from "axios";
 import { useNavigate  } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
-import Header from "../../component/Header/Header";
 import Profiles from "../../component/Profiles/Profiles";
 import Loading from "../../component/Loading/Loading";
 
 import MilestonesList from "../../component/MilestonesList/MilestonesList";
-import Footer from "../../component/Footer/Footer";
 
-function DashBoard() {
-  const [profiles, setProfiles] = useState([]);
-  const [profileId, setProfileId] = useState(null);
+
+function DashBoard({profiles ,setProfiles , profileId ,setProfileId }) {
+
   const [isLoading, setIsLoading] = useState(true);
   const [failedAuth, setFailedAuth] = useState(false);
 
@@ -30,7 +28,7 @@ function DashBoard() {
 
       if (response.data.length === 0) {
         // No profiles found, navigate to Add profile
-        navigate("/profiles");
+        navigate("/settings");
       } else {
         setProfiles(response.data);
         //   set the frist profile as the defult one
@@ -58,10 +56,8 @@ function DashBoard() {
 
   return (
     <div>
-      <Header setProfiles={setProfiles} setFailedAuth={setFailedAuth} />
       <Profiles profiles={profiles} setProfileId={setProfileId} />
       <MilestonesList profileId={profileId} />
-      <Footer profileId={profileId} />
     </div>
   );
 }

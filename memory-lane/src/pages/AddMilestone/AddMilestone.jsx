@@ -1,17 +1,14 @@
 import "./AddMilestone.scss";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Navigate } from "react-router-dom";
 
 import LocationInput from "../../component/LocationInput/LocationInput";
 import { MdError } from "react-icons/md";
 
 function AddMilestone() {
-  const { profileId } = useParams();
-
-  const navigate = useNavigate();
-
+  const [failedAuth, setFailedAuth] = useState(false);
   const [formData, setFormData] = useState({
     title: "",
     date: "",
@@ -25,6 +22,18 @@ function AddMilestone() {
   const [location, setlocation] = useState("");
   const [latitude, setlatitude] = useState(null);
   const [longitude, setlongitude] = useState(null);
+
+  const { profileId } = useParams();
+
+  const navigate = useNavigate();
+
+  // to not show page when user is logged out
+  useEffect(() => {
+    const token = sessionStorage.getItem("token");
+    if (!token) {
+      navigate("./logIn");
+    }
+  }, []);
 
   // handle formdata input change
   const handleChange = (event) => {
@@ -114,12 +123,16 @@ function AddMilestone() {
       navigate("/");
     } catch (error) {
       console.error("Error submitting milestone:", error);
+      setFailedAuth(true);
+    }
+
+    if (failedAuth) {
+      return <Navigate to="/logIn" />;
     }
   };
 
   return (
     <div>
-
       <h1 className="add-title">Capture New Memory</h1>
       <form onSubmit={handleSubmit} className="add-form">
         <label className="add-form__label" htmlFor="title">
@@ -221,7 +234,6 @@ function AddMilestone() {
           CREATE
         </button>
       </form>
-
     </div>
   );
 }
