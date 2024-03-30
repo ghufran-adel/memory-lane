@@ -1,0 +1,70 @@
+@use "../../styles/partials/variables" as *;
+
+
+
+.add__btn {
+    align-self: flex-end;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    border: solid 1px $active-text-color;
+    border-radius: 6px;
+    color: $seconday-text-color;
+    background-color: $btn-color;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.profile-add-form {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem 5rem 2rem;
+
+    &__input {
+        padding: 0.5rem;
+        margin: 4px 0px 0px 0px;
+        border: solid 1px $hover-color;
+        border-radius: 10px;
+
+        &:focus {
+            outline: none;
+            border: 1px solid $btn-color;
+        }
+
+        &::file-selector-button {
+            background-color: $background-color;
+            color: $primary-text-color;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 10px 0px 0px 10px;
+        }
+
+        &--file {
+            padding: 0;
+        }
+
+        &--error {
+            color: red;
+            font-size: 0.7rem;
+            margin-bottom: 5px;
+        }
+    }
+
+    &__label {
+        color: $hero-text-color;
+        font-size: 12px;
+        padding-left: 8px;
+        font-weight: 600;
+        margin-top: 16px;
+    }
+
+    &__btn {
+        padding: 0.5rem;
+        margin-top: 2rem;
+        border: solid 1px $hover-color;
+        border-radius: 62px;
+        color: $seconday-text-color;
+        font-weight: 600;
+        background-color: $btn-color;
+        cursor: pointer;
+    }
+}

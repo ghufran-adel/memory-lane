@@ -7,6 +7,7 @@ import { useParams, useNavigate, Navigate } from "react-router-dom";
 import LocationInput from "../../component/LocationInput/LocationInput";
 import { MdError } from "react-icons/md";
 
+
 function AddMilestone() {
   const [failedAuth, setFailedAuth] = useState(false);
   const [formData, setFormData] = useState({
