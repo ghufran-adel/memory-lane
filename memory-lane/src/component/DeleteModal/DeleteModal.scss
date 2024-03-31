@@ -1,0 +1,10 @@
+@use "../../styles/partials/variables" as *;
+
+.delete-icon{
+    border: none;
+    background-color: $primary-text-color;
+    font-size: 18px;
+    margin-left: 6px;
+    color:$hover-color;
+    text-align: end;
+}

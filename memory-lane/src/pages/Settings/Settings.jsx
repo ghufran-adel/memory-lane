@@ -2,12 +2,14 @@ import "./Settings.scss";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { LiaBirthdayCakeSolid } from "react-icons/lia";
 
 import Loading from "../../component/Loading/Loading";
 
 import Addprofile from "../../component/Addprofile/Addprofile";
+import DeleteModal from "../../component/DeleteModal/DeleteModal";
+import { MdOutlineModeEditOutline } from "react-icons/md";
 
 function Settings() {
   const [profiles, setProfiles] = useState([]);
@@ -15,7 +17,6 @@ function Settings() {
   const [failedAuth, setFailedAuth] = useState(false);
   const [Profile, setProfile] = useState(false);
 
-  const navigate = useNavigate();
 
   const getProfiles = async () => {
     const token = sessionStorage.getItem("token");
@@ -79,13 +80,12 @@ function Settings() {
         .map((profile) => {
           return (
             <div className="profile-card" key={profile.id}>
-              <div className="profile-card__media">
-                <img
-                  className="profile-card__image"
-                  src={`${process.env.REACT_APP_BASE_URL}${profile.avatar_url}`}
-                  alt={profile.baby_name}
-                />
-              </div>
+              <div
+                className="profile-card__media"
+                style={{
+                  backgroundImage: `url(${process.env.REACT_APP_BASE_URL}${profile.avatar_url})`,
+                }}
+              ></div>
               <div className="profile-card__details">
                 <h4 className="profile-card__title">{profile.baby_name}</h4>
                 <div className="profile-card__date">
@@ -93,6 +93,16 @@ function Settings() {
                   <time dateTime={parseDate(profile.baby_birthday)}>
                     {parseDate(profile.baby_birthday)}
                   </time>
+                </div>
+                <div className="profile-card__box">
+                  <MdOutlineModeEditOutline className="stting__delete-icon" />
+                  <DeleteModal
+                    className="setting__delete-icon"
+                    Item={"profile"}
+                    itemId={profile.id}
+                    list={profiles}
+                    UpdateState={setProfiles}
+                  />
                 </div>
               </div>
             </div>

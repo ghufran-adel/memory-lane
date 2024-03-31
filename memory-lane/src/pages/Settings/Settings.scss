@@ -2,9 +2,11 @@
 
 
 .setting{
-    padding: 0rem 4rem 7rem 4rem;
+    padding: 1rem 4rem 7rem 4rem;
     display: flex;
     flex-direction: column;
+    
+
 }
 
 .profile-card{
@@ -12,11 +14,8 @@
     display: flex;
     flex-direction: row;
     border-bottom: 1px solid rgb(192, 192, 192);
-    padding-bottom: 1rem;
     margin-top: 1.5rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     transition: transform 0.3s ease;
 
     &:active{
@@ -24,20 +23,21 @@
     }
 
     &__media{
-         width: 50%;
+         width: 30%;
          display: flex;
          align-items: center;
+         height: 65px;
+         background-size: cover;
+         background-repeat: no-repeat;
+         background-position: center;
+         border-radius: 100px;
     }
 
-    &__image{
-        border-radius: 6px;
-        width: 70%;
-    }
     &__details{
         width: 80%;
         padding:10px 0px 10px 10px;
-        justify-content: space-around;
-        
+        display: flex;
+        flex-direction: column;
   
     }
     &__date{
@@ -52,7 +52,7 @@
         margin-right: 4px;
     }
     &__title{
-        font-size: 15px;
+        font-size: 16px;
         font-weight: 600;
         margin: 4px;
         color: $hover-color;
@@ -63,5 +63,11 @@
         width: 100%;
         margin: 0;
         color: $hero-text-color;
+    }
+    &__box{
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+        align-items: center;
     }
 }
