@@ -8,11 +8,12 @@ import DialogContent from "@mui/material/DialogContent";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
-import {  Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 import axios from "axios";
 import { MdError } from "react-icons/md";
-import "./Addprofile.scss";
+import "./EditProfile.scss";
+import { MdOutlineModeEditOutline } from "react-icons/md";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -23,14 +24,15 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-export default function Addprofile({ setProfiles, profiles }) {
+export default function EditProfile({ setProfiles, profiles, Profile }) {
   const [open, setOpen] = React.useState(false);
   const [error, setError] = useState({}); //to validate form
   const [failedAuth, setFailedAuth] = useState(false);
+
   const [formData, setFormData] = useState({
-    baby_name: "",
-    baby_birthday: "",
-    image: "",
+    baby_name: `${Profile.baby_name}`,
+    baby_birthday: `${Profile.baby_birthday}`,
+    image: `${Profile.avatar_url}`,
   });
 
   // handle formdata input change
@@ -60,7 +62,7 @@ export default function Addprofile({ setProfiles, profiles }) {
       isValid = false;
     }
 
-    if (!formData.baby_birthday || formData.baby_birthday ===" ") {
+    if (!formData.baby_birthday || formData.baby_birthday === "") {
       errors.baby_birthday = "This field is required";
       isValid = false;
     }
@@ -69,7 +71,7 @@ export default function Addprofile({ setProfiles, profiles }) {
     return isValid;
   };
 
-  // post request for new milstone
+  // patch request for  profile
   const handleSubmit = async (event) => {
     event.preventDefault();
     isFormValid();
@@ -83,8 +85,8 @@ export default function Addprofile({ setProfiles, profiles }) {
     formDataToSend.append("image", formData.image);
 
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_BASE_URL}api/profile`,
+      const response = await axios.patch(
+        `${process.env.REACT_APP_BASE_URL}api/profile/${Profile.id}`,
         formDataToSend,
         {
           headers: {
@@ -93,12 +95,13 @@ export default function Addprofile({ setProfiles, profiles }) {
           },
         }
       );
+
       setOpen(false);
-      setProfiles([...profiles, response.data.profile]);
+      window.location.reload();
     } catch (error) {
-      console.error("Error adding profile:", error);
+      console.error("Error updating profile:", error);
       setFailedAuth(true);
-    };
+    }
 
     if (failedAuth) {
       return <Navigate to="/logIn" />;
@@ -114,8 +117,8 @@ export default function Addprofile({ setProfiles, profiles }) {
 
   return (
     <React.Fragment>
-      <button className="add__btn" onClick={handleClickOpen}>
-        Add Profile
+      <button className="delete-icon" onClick={handleClickOpen}>
+        <MdOutlineModeEditOutline />
       </button>
       <BootstrapDialog
         onClose={handleClose}
@@ -123,7 +126,7 @@ export default function Addprofile({ setProfiles, profiles }) {
         open={open}
       >
         <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
-          Add profile
+          Edit Profile
         </DialogTitle>
         <IconButton
           aria-label="close"
@@ -192,7 +195,7 @@ export default function Addprofile({ setProfiles, profiles }) {
               </p>
             )}
             <button className="profile-add-form__btn" type="submit">
-              ADD
+              SAVE
             </button>
           </form>
         </DialogContent>

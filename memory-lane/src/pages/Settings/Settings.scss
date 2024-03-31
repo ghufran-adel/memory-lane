@@ -1,15 +1,12 @@
 @use "../../styles/partials/variables" as *;
 
-
-.setting{
+.setting {
     padding: 1rem 4rem 7rem 4rem;
     display: flex;
     flex-direction: column;
-    
-
 }
 
-.profile-card{
+.profile-card {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -18,53 +15,59 @@
     align-items: flex-start;
     transition: transform 0.3s ease;
 
-    &:active{
+    &:active {
         transform: scale(1.1);
     }
 
-    &__media{
-         width: 30%;
-         display: flex;
-         align-items: center;
-         height: 65px;
-         background-size: cover;
-         background-repeat: no-repeat;
-         background-position: center;
-         border-radius: 100px;
+    &__media {
+        height: 60px;
+        width: 60px;
     }
 
-    &__details{
+    &__image {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        border-radius: 50px;
+    }
+
+    &__details {
         width: 80%;
-        padding:10px 0px 10px 10px;
+        padding: 10px 0px 10px 10px;
         display: flex;
         flex-direction: column;
-  
     }
-    &__date{
+
+    &__date {
         font-size: 11px;
-        color:$hero-text-color;
+        color: $hero-text-color;
         display: flex;
         flex-direction: row;
         align-items: center;
     }
-    &__icon{
+
+    &__icon {
         font-size: 16px;
         margin-right: 4px;
     }
-    &__title{
+
+    &__title {
         font-size: 16px;
         font-weight: 600;
         margin: 4px;
         color: $hover-color;
     }
 
-    &__description{
+    &__description {
         font-size: 10px;
         width: 100%;
         margin: 0;
         color: $hero-text-color;
     }
-    &__box{
+
+    &__box {
         display: flex;
         flex-direction: row;
         justify-content: end;

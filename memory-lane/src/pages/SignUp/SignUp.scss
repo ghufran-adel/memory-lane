@@ -40,13 +40,14 @@
     }
 
     &__btn{
-        padding: 0.5rem;
+        padding: 0.7rem;
         margin-top: 2rem;
         border: solid 1px $active-text-color;
         border-radius: 62px;
         color:$seconday-text-color;
         background-color: $btn-color;
         cursor: pointer;
+        font-weight: 600;
     }
 
     &__span{

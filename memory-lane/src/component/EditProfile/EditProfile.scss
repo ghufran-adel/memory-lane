@@ -1,7 +1,6 @@
 @use "../../styles/partials/variables" as *;
 
 
-
 .add__btn {
     align-self: flex-end;
     padding: 0.5rem 1rem;
@@ -58,13 +57,22 @@
     }
 
     &__btn {
-        padding: 1rem 0.5rem;
+        padding: 0.5rem;
         margin-top: 2rem;
-        border: none;
+        border: solid 1px $hover-color;
         border-radius: 62px;
         color: $seconday-text-color;
         font-weight: 600;
         background-color: $btn-color;
         cursor: pointer;
     }
+}
+
+.delete-icon{
+    border: none;
+    background-color: $primary-text-color;
+    font-size: 18px;
+    margin-left: 6px;
+    color:$hover-color;
+    text-align: end;
 }

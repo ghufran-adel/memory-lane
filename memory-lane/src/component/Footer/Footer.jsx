@@ -10,7 +10,7 @@ function Footer() {
   const { profileId } = useParams();
   return (
     <footer className="footer">
-      <NavLink to="/contact-us" className="footer__link">
+      <NavLink to="mailto: support@example.com" className="footer__link">
         <MdOutlineMailOutline className=" footer__icon" />
       </NavLink>
       <NavLink to="/" className="footer__link">

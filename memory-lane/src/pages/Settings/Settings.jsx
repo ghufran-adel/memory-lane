@@ -9,14 +9,13 @@ import Loading from "../../component/Loading/Loading";
 
 import Addprofile from "../../component/Addprofile/Addprofile";
 import DeleteModal from "../../component/DeleteModal/DeleteModal";
-import { MdOutlineModeEditOutline } from "react-icons/md";
+
+import EditProfile from "../../component/EditProfile/EditProfile";
 
 function Settings() {
   const [profiles, setProfiles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [failedAuth, setFailedAuth] = useState(false);
-  const [Profile, setProfile] = useState(false);
-
 
   const getProfiles = async () => {
     const token = sessionStorage.getItem("token");
@@ -28,13 +27,7 @@ function Settings() {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-
-      if (response.data.length === 0) {
-        // No profiles found, upadate satate to Add profile
-        setProfile(true);
-      } else {
-        setProfiles(response.data);
-      }
+      setProfiles(response.data);
     } catch (error) {
       console.error(error);
       setFailedAuth(true);
@@ -72,7 +65,10 @@ function Settings() {
 
   return (
     <main className="setting">
+      {/* add new profile */}
       <Addprofile setProfiles={setProfiles} profiles={profiles} />
+
+      {/* list of profiles  */}
 
       {profiles
         .slice()
@@ -80,12 +76,14 @@ function Settings() {
         .map((profile) => {
           return (
             <div className="profile-card" key={profile.id}>
-              <div
-                className="profile-card__media"
-                style={{
-                  backgroundImage: `url(${process.env.REACT_APP_BASE_URL}${profile.avatar_url})`,
-                }}
-              ></div>
+              <div className="profile-card__media">
+                <div
+                  className="profile-card__image"
+                  style={{
+                    backgroundImage: `url(${process.env.REACT_APP_BASE_URL}${profile.avatar_url})`,
+                  }}
+                ></div>
+              </div>
               <div className="profile-card__details">
                 <h4 className="profile-card__title">{profile.baby_name}</h4>
                 <div className="profile-card__date">
@@ -94,8 +92,15 @@ function Settings() {
                     {parseDate(profile.baby_birthday)}
                   </time>
                 </div>
+
+                {/* edit profile */}
                 <div className="profile-card__box">
-                  <MdOutlineModeEditOutline className="stting__delete-icon" />
+                  <EditProfile
+                    Profile={profile}
+                    className="stting__delete-icon"
+                  />
+
+                  {/* delete profile */}
                   <DeleteModal
                     className="setting__delete-icon"
                     Item={"profile"}
