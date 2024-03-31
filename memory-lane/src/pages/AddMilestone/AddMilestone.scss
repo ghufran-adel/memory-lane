@@ -1,63 +1,74 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/global" as *;
 
 
-.add-title{
+
+.add {
+  &__title {
     font-size: 20px;
-   margin: 0rem 2rem;
-   color:$hero-text-color;
-   text-align: center;
+    margin: 0rem 2rem;
+    color: $hero-text-color;
+    text-align: center;
+  }
+  @include tablet {
+    width: 500px;
+  }
+
+  @include desktop;
 }
 
-.add-form{
-    display: flex;
-    flex-direction: column;
-    padding: 1rem 2rem 5rem 2rem;
+.add-form {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem 5rem 2rem;
 
-    &__input {
-        padding: 0.5rem;
-        margin: 4px 0px 0px 0px;
-        border: solid 1px $hover-color;
-        border-radius: 10px;
+  &__input {
+    padding: 0.5rem;
+    margin: 4px 0px 0px 0px;
+    border: solid 1px $hover-color;
+    border-radius: 10px;
 
-        &:focus{
-          outline: none;
-          border:1px solid $btn-color;
-        }
+    &:focus {
+      outline: none;
+      border: 1px solid $btn-color;
+    }
 
-        &::file-selector-button {
-          background-color: $background-color;
-          color: $primary-text-color;
-          padding: 0.5rem;
-          border: none;
-          border-radius: 10px 0px 0px 10px;
-        }
-        &--file{
-            padding: 0;   
-        }
+    &::file-selector-button {
+      background-color: $background-color;
+      color: $primary-text-color;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 10px 0px 0px 10px;
+    }
 
-        &--error{
-          color: red;
-          font-size: 0.7rem;
-          margin-bottom: 5px;
-        }
-      }
-    
-      &__label {
-        color: $hero-text-color;
-        font-size: 12px;
-        padding-left: 8px;
-        font-weight: 600;
-        margin-top: 16px;
-      }
-    
-      &__btn {
-        padding: .8rem;
-        margin-top: 2rem;
-        border: none;
-        border-radius: 62px;
-        color: $seconday-text-color;
-        font-weight: 600;
-        background-color: $btn-color;
-        cursor: pointer;
-      }
+    &--file {
+      padding: 0;
+    }
+
+    &--error {
+      color: red;
+      font-size: 0.7rem;
+      margin-bottom: 5px;
+    }
+  }
+
+  &__label {
+    color: $hero-text-color;
+    font-size: 12px;
+    padding-left: 8px;
+    font-weight: 600;
+    margin-top: 16px;
+  }
+
+  &__btn {
+    padding: .8rem;
+    margin-top: 2rem;
+    border: none;
+    border-radius: 62px;
+    color: $seconday-text-color;
+    font-weight: 600;
+    background-color: $btn-color;
+    cursor: pointer;
+  }
 }

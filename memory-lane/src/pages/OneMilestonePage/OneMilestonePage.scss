@@ -1,22 +1,33 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/global" as *;
+
 
 .details {
     padding: 1rem 1rem 7rem 1rem;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    
-    &__box{
+
+    @include tablet {
+        width: 500px;
+    }
+
+    @include desktop;
+
+    &__box {
         display: flex;
         flex-direction: row-reverse;
         justify-content: end;
         align-items: center;
         padding-top: 1rem;
     }
-    &__edit{
+
+    &__edit {
         color: $hover-color;
     }
-    &__delete{
+
+    &__delete {
         align-self: flex-end;
         font-size: 20px;
     }
@@ -41,14 +52,17 @@
     &__text {
         font-size: 13px;
         color: $hero-text-color;
-        &--underline{
+
+        &--underline {
             text-decoration: underline;
             cursor: pointer;
-            &:active{
+
+            &:active {
                 color: $hover-color;
             }
         }
-        &--ppl{
+
+        &--ppl {
             margin-top: 0;
         }
     }

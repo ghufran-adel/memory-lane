@@ -1,30 +1,49 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/global" as *;
 
 .logIn {
-  &__image {
-    width: 70px;
-    height: 100px;
-    position: absolute;
-    top: 0;
-    right: 0;
+  width: 100%;
+  height: 100vh;
+
+  @include tablet {
+    position: relative;
+    width: 500px;
+    height: 100vh;
   }
+
+  @include desktop;
+
   &__box {
     font-family: "Itim", cursive;
-    color: #555555;
     padding: 2rem;
     font-size: 13px;
-    z-index: 1;
+    background-image: url("../../assets/pattern_pastel_baby.jpg");
+    background-size: 2000px 2000px;
+    background-repeat: no-repeat;
+    position: relative;
+    height: 100%;
+    color: $hero-text-color;
+
+    @include tablet;
   }
+
+  &__content {
+    color: #7e7e7e;
+  }
+
   &__header {
     font-weight: 600;
   }
+
   &__subheader {
-font-weight: 400;
-   
+    font-weight: 400;
   }
+
   &__text {
     line-height: 2;
   }
+
   &__form {
     position: absolute;
     bottom: 0;
@@ -35,6 +54,13 @@ font-weight: 400;
     border-radius: 30px 0 0 0;
     display: flex;
     flex-direction: column;
+    height: 50%;
+
+    @include tablet {
+      width: 500px;
+    }
+
+    @include desktop;
   }
 
   &__input {
@@ -42,7 +68,13 @@ font-weight: 400;
     margin: 4px 0px 16px 0px;
     border: solid 1px $active-text-color;
     border-radius: 10px;
+
+    &:focus {
+      outline: none;
+      border: 1px solid $btn-color;
+    }
   }
+
 
   &__label {
     color: $primary-text-color;
@@ -73,6 +105,7 @@ font-weight: 400;
     font-weight: 600;
     text-decoration: underline;
   }
+
   &__message {
     font-size: 12px;
     color: rgb(169, 34, 34);

@@ -10,12 +10,15 @@ function Footer() {
   const { profileId } = useParams();
   return (
     <footer className="footer">
+
       <NavLink to="mailto: support@example.com" className="footer__link">
         <MdOutlineMailOutline className=" footer__icon" />
       </NavLink>
-      <NavLink to="/" className="footer__link">
+
+      <NavLink to={`/`} className="footer__link">
         <BiHome className=" footer__icon " />
       </NavLink>
+
       {profileId && (
         <NavLink to={`${profileId}/milestones`} className="footer__link">
           <IoAddCircleOutline className=" footer__icon footer__icon--add" />
@@ -25,9 +28,11 @@ function Footer() {
       <NavLink to="/settings" className="footer__link">
         <IoSettingsOutline className=" footer__icon" />
       </NavLink>
+
       <NavLink to="/charts" className="footer__link">
         <FaChartLine className=" footer__icon--chart" />
       </NavLink>
+
     </footer>
   );
 }

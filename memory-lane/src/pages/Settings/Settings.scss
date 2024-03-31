@@ -1,9 +1,17 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/global" as *;
 
 .setting {
     padding: 1rem 4rem 7rem 4rem;
     display: flex;
     flex-direction: column;
+
+    @include tablet {
+        width: 500px;
+    }
+
+    @include desktop;
 }
 
 .profile-card {

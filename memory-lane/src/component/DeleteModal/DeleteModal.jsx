@@ -30,7 +30,7 @@ export default function DeleteModal({Item ,itemId , list ,UpdateState ,Id}) {
     const token = sessionStorage.getItem("token");
 
     try {
-    
+      //  to delet a profile
         if (Item === 'profile'){
           const response = await axios.delete(
             `${process.env.REACT_APP_BASE_URL}api/${Item}/${itemId}`,
@@ -44,7 +44,8 @@ export default function DeleteModal({Item ,itemId , list ,UpdateState ,Id}) {
           ));
         UpdateState(filterd)
         setOpen(false);
-      }
+      };
+      // to delete milestone
          if(Item === 'milstones'){
           const response = await axios.delete(
             `${process.env.REACT_APP_BASE_URL}api/${Item}/${itemId}/${Id}`,
@@ -71,16 +72,16 @@ export default function DeleteModal({Item ,itemId , list ,UpdateState ,Id}) {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">
+        <h3 id="alert-dialog-title" className='delete__text'>
           {`Would you like to delete this ${Item}?`}
-        </DialogTitle>
+        </h3>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
+          <p id="alert-dialog-description">
 {`If you delete this ${Item} ,there is no way to get data back`}
-          </DialogContentText>
+          </p>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>CANCLE</Button>
+          <Button className='delete__btn' onClick={handleClose}>CANCLE</Button>
           <Button onClick={handleDelete} autoFocus>
             DELETE
           </Button>

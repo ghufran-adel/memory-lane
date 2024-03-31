@@ -13,7 +13,7 @@ function LogIn() {
     event.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:8080/api/login", {
+      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}api/login`, {
         email: event.target.email.value,
         password: event.target.password.value,
       });
@@ -30,13 +30,9 @@ function LogIn() {
   
   return (
     <>
-      <main>
-        <img
-          className="logIn__image"
-          src={`http://localhost:8080/images/curve.png`}
-          alt="baby"
-        />
+      <main className="logIn">
         <div className="logIn__box">
+          <div className="logIn__content">
           <h1 className="logIn__header">Welcome to Memory Lane,</h1>
           <h2 className="logIn__subheader">where every moment matters.</h2>
           <p className="logIn__text">
@@ -44,6 +40,7 @@ function LogIn() {
             smile, every giggle, and every milestone achieved is a cherished
             moment.
           </p>
+          </div>
         </div>
         <form className="logIn__form" onSubmit={handleSubmit}>
           <label className="logIn__label">Email</label>

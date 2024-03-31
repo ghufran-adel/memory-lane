@@ -51,7 +51,10 @@ function MilestonesList() {
   return (
     <div>
       <section className="milestones">
-        {milestones.map((milestone) => (
+        {milestones
+        .slice()
+        .sort((a, b) => new Date(b.date) - new Date(a.date)) //to order according to the create date
+        .map((milestone) => (
           
           <Link to={`milestones/${milestone.id}`} key={milestone.id} className="milestone__item">
             <MilestonCard

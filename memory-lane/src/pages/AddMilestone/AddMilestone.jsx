@@ -7,7 +7,6 @@ import { useParams, useNavigate, Navigate } from "react-router-dom";
 import LocationInput from "../../component/LocationInput/LocationInput";
 import { MdError } from "react-icons/md";
 
-
 function AddMilestone() {
   const [failedAuth, setFailedAuth] = useState(false);
   const [formData, setFormData] = useState({
@@ -109,7 +108,7 @@ function AddMilestone() {
 
     try {
       const response = await axios.post(
-        `http://localhost:8080/api/milstones/${profileId}`,
+        `${process.env.REACT_APP_BASE_URL}api/milstones/${profileId}`,
         formDataToSend,
         {
           headers: {
@@ -132,8 +131,8 @@ function AddMilestone() {
   };
 
   return (
-    <div>
-      <h1 className="add-title">Capture New Memory</h1>
+    <main className="add">
+      <h1 className="add__title">Capture New Memory</h1>
       <form onSubmit={handleSubmit} className="add-form">
         <label className="add-form__label" htmlFor="title">
           Title
@@ -234,7 +233,7 @@ function AddMilestone() {
           CREATE
         </button>
       </form>
-    </div>
+    </main>
   );
 }
 

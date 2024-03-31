@@ -1,4 +1,6 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/global" as *;
 
 .footer {
     background-color: $background-color;
@@ -12,20 +14,28 @@
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     border-radius: 10px 10px 0 0;
 
+    @include tablet {
+        width: 500px;
+    }
+
+    @include desktop;
+
     &__icon {
         font-size: 24px;
 
         &--add {
             font-size: 28px;
         }
-        &--chart{
+
+        &--chart {
             font-size: 20px;
         }
     }
 
     &__link {
         color: $primary-text-color;
-        &.active{
+
+        &.active {
             color: $btn-color;
             border-bottom: 1px solid $btn-color;
         }

@@ -1,4 +1,15 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/global" as *;
 
-.home{
+
+.home {
     padding-bottom: 7rem;
+
+    @include tablet {
+        width: 500px;
+    }
+
+    @include desktop;
+
 }

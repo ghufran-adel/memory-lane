@@ -14,7 +14,7 @@ function SignUp({loggedIn}) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("http://localhost:8080/api/signup", {
+      await axios.post(`${process.env.REACT_APP_BASE_URL}api/signup`, {
         user_name: event.target.user_name.value,
         email: event.target.email.value,
         password: event.target.password.value,

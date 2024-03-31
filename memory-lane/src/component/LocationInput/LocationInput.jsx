@@ -1,4 +1,3 @@
-
 import "./LocationInput.scss";
 import PlacesAutocomplete from "react-places-autocomplete";
 import { geocodeByAddress, getLatLng } from "react-places-autocomplete";

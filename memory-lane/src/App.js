@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-
 import SignUp from "./pages/SignUp/SignUp";
 import LogIn from "./pages/LogIn/LogIn";
 import DashBoard from "./pages/Home/Home";
@@ -17,7 +16,7 @@ function App() {
         <Route exact path="/signUp" element={<SignUp />} />
         <Route exact path="/logIn" element={<LogIn />} />
         <Route element={<Layout />}>
-          <Route exact path="/" element={<DashBoard />}>
+          <Route path="/" element={<DashBoard />}>
             <Route exact path="/:profileId" element={<MilestonesList />} />
           </Route>
           <Route exact path="/settings" element={<Settings />} />

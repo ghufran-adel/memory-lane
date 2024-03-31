@@ -15,7 +15,6 @@ import { IoIosPeople } from "react-icons/io";
 import { MdOutlineModeEditOutline } from "react-icons/md";
 
 function OneMilestonPage() {
-
   // state to hold all the details of the milestone
   const [milestoneDetails, setMilestoneDetails] = useState(null);
   const [showMap, setShowMap] = useState(false);
@@ -28,14 +27,12 @@ function OneMilestonPage() {
   // add params to target one milestone
   const { profileId, milestoneId } = useParams();
 
-
-
   const getMilestoneDetails = async () => {
     const token = sessionStorage.getItem("token");
 
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/milstones/${profileId}/${milestoneId}`,
+        `${process.env.REACT_APP_BASE_URL}api/milstones/${profileId}/${milestoneId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -55,7 +52,6 @@ function OneMilestonPage() {
 
   if (failedAuth) {
     return <Navigate to="/logIn" />;
-
   }
 
   if (isLoading) {
@@ -65,23 +61,30 @@ function OneMilestonPage() {
   return (
     <>
       <main className="details">
-        
         {/* title */}
-          <h4 className="details__title">{milestoneDetails.title}</h4>
+        <h4 className="details__title">{milestoneDetails.title}</h4>
 
         {/* slider */}
         <ImageSlider
           images={milestoneDetails.media}
           title={milestoneDetails.title}
         />
-                  {/* delete */}
-                  <div className="details__box">
-         <DeleteModal className='details__delete' Id={milestoneId} itemId={profileId} Item={'milstones'} />
-         <MdOutlineModeEditOutline className="details__edit" />
-         </div>
+        {/* delete */}
+        <div className="details__box">
+          <DeleteModal
+            className="details__delete"
+            Id={milestoneId}
+            itemId={profileId}
+            Item={"milstones"}
+          />
+          <MdOutlineModeEditOutline className="details__edit" />
+        </div>
         {/* loaction */}
         <div className="details__loaction">
-          <p onClick={toggleMap} className="details__text details__text--underline">
+          <p
+            onClick={toggleMap}
+            className="details__text details__text--underline"
+          >
             <MdLocationOn /> {milestoneDetails.address}
           </p>
           {showMap && (
@@ -96,7 +99,7 @@ function OneMilestonPage() {
         <div>
           <p className="details__text details__text--ppl">
             <IoIosPeople />
-            {milestoneDetails.people} mom
+            {milestoneDetails.people}
           </p>
         </div>
         {/* discription */}
@@ -105,7 +108,6 @@ function OneMilestonPage() {
             <MdDescription /> {milestoneDetails.description}
           </p>
         </div>
-        
       </main>
     </>
   );
