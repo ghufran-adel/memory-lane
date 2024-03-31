@@ -25,7 +25,7 @@ function ImageSlider({ images, title }) {
       <Slide {...properties} autoplay={false}>
         {images.map((image) => (
           <div className="slide__effect" key={image.id}>
-            <img className="slide__image" src={image.media_url} alt={title} />
+            <img className="slide__image" src={`${process.env.REACT_APP_BASE_URL}${image.media_url}`} alt={title} />
           </div>
         ))}
       </Slide>

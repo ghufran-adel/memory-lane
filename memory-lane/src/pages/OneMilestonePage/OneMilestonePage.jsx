@@ -6,12 +6,13 @@ import { Navigate } from "react-router-dom";
 
 import ImageSlider from "../../component/ImageSlider/ImageSlider";
 import Loading from "../../component/Loading/Loading";
+import DeleteModal from "../../component/DeleteModal/DeleteModal";
 
 // icons
 import { MdLocationOn } from "react-icons/md";
 import { MdDescription } from "react-icons/md";
 import { IoIosPeople } from "react-icons/io";
-
+import { MdOutlineModeEditOutline } from "react-icons/md";
 
 function OneMilestonPage() {
 
@@ -60,11 +61,11 @@ function OneMilestonPage() {
   if (isLoading) {
     return <Loading />;
   }
-  console.log(milestoneDetails);
 
   return (
     <>
       <main className="details">
+        
         {/* title */}
           <h4 className="details__title">{milestoneDetails.title}</h4>
 
@@ -73,7 +74,11 @@ function OneMilestonPage() {
           images={milestoneDetails.media}
           title={milestoneDetails.title}
         />
-
+                  {/* delete */}
+                  <div className="details__box">
+         <DeleteModal className='details__delete' Id={milestoneId} itemId={profileId} Item={'milstones'} />
+         <MdOutlineModeEditOutline className="details__edit" />
+         </div>
         {/* loaction */}
         <div className="details__loaction">
           <p onClick={toggleMap} className="details__text details__text--underline">
@@ -100,6 +105,7 @@ function OneMilestonPage() {
             <MdDescription /> {milestoneDetails.description}
           </p>
         </div>
+        
       </main>
     </>
   );

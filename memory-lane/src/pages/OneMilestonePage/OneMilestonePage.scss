@@ -1,9 +1,25 @@
 @use "../../styles/partials/variables" as *;
 
 .details {
-    padding: 1rem;
+    padding: 1rem 1rem 7rem 1rem;
     border-radius: 10px;
-
+    display: flex;
+    flex-direction: column;
+    
+    &__box{
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: end;
+        align-items: center;
+        padding-top: 1rem;
+    }
+    &__edit{
+        color: $hover-color;
+    }
+    &__delete{
+        align-self: flex-end;
+        font-size: 20px;
+    }
 
     &__title {
         margin-bottom: 1rem;

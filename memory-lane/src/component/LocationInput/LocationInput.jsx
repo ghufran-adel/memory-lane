@@ -13,7 +13,6 @@ function LocationInput({ setlongitude, setlatitude, setlocation, location }) {
     geocodeByAddress(newAddress)
       .then((results) => getLatLng(results[0]))
       .then((latLng) => {
-        console.log("Success", latLng);
         setlatitude(latLng.lat);
         setlongitude(latLng.lng);
       })

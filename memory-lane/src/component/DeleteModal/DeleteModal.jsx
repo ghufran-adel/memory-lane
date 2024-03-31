@@ -9,9 +9,12 @@ import { MdDeleteOutline } from "react-icons/md";
 import './DeleteModal.scss' ;
 
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
-export default function DeleteModal({Item ,itemId , list ,UpdateState}) {
+export default function DeleteModal({Item ,itemId , list ,UpdateState ,Id}) {
   const [open, setOpen] = React.useState(false);
+
+  const navigate = useNavigate();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -27,19 +30,31 @@ export default function DeleteModal({Item ,itemId , list ,UpdateState}) {
     const token = sessionStorage.getItem("token");
 
     try {
-      const response = await axios.delete(
-        `${process.env.REACT_APP_BASE_URL}api/${Item}/${itemId}`,
-        {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
-      const filterd=(
-        list.filter(
-          (item) => item.id !== itemId
-        )
-      );
-      UpdateState(filterd);
-      setOpen(false);
+    
+        if (Item === 'profile'){
+          const response = await axios.delete(
+            `${process.env.REACT_APP_BASE_URL}api/${Item}/${itemId}`,
+            {
+                headers: { Authorization: `Bearer ${token}` },
+              }
+            );
+        const filterd=(
+          list.filter(
+            (item) => item.id !== itemId
+          ));
+        UpdateState(filterd)
+        setOpen(false);
+      }
+         if(Item === 'milstones'){
+          const response = await axios.delete(
+            `${process.env.REACT_APP_BASE_URL}api/${Item}/${itemId}/${Id}`,
+            {
+                headers: { Authorization: `Bearer ${token}` },
+              }
+            );
+            setOpen(false);
+          navigate('/')
+        }
     } catch (error) {
       console.error("Error deleting post:", error);
     }

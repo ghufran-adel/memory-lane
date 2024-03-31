@@ -18,7 +18,7 @@ function DashBoard() {
     const token = sessionStorage.getItem("token");
 
     try {
-      const response = await axios.get("http://localhost:8080/api/profile", {
+      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}api/profile`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -53,7 +53,7 @@ function DashBoard() {
   return (
     <main className="home">
       <Profiles profiles={profiles} />
-      {/* nest route to get the milestones list here */}
+      {/* nested route to get the milestones list here */}
       <Outlet />
     </main>
   );

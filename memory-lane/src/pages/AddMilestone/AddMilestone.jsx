@@ -118,7 +118,6 @@ function AddMilestone() {
           },
         }
       );
-      console.log(response.data);
 
       // redirect to home
       navigate("/");

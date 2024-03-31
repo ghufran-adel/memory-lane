@@ -21,7 +21,7 @@ function MilestonesList() {
 
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/milstones/${profileId}`,
+        `${process.env.REACT_APP_BASE_URL}api/milstones/${profileId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

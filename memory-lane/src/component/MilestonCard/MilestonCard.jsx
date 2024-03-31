@@ -20,7 +20,7 @@ function MilestoneCard({ title, description, media, date }) {
       <div className="milestone-card__media">
         <img
           className="milestone-card__image"
-          src={media[0].media_url}
+          src={`${process.env.REACT_APP_BASE_URL}${media[0].media_url}`}
           alt={title}
         />
       </div>
