@@ -14,6 +14,7 @@ function AddMilestone() {
     date: "",
     media: [],
     description: "",
+    people:""
   });
 
   const [error, setError] = useState({}); //to validate form
@@ -102,6 +103,7 @@ function AddMilestone() {
     formDataToSend.append("latitude", latitude);
     formDataToSend.append("longitude", longitude);
     formDataToSend.append("description", formData.description);
+    formDataToSend.append("people", formData.people);
     for (let i = 0; i < formData.media.length; i++) {
       formDataToSend.append("media", formData.media[i]);
     }
@@ -134,6 +136,7 @@ function AddMilestone() {
     <main className="add">
       <h1 className="add__title">Capture New Memory</h1>
       <form onSubmit={handleSubmit} className="add-form">
+
         <label className="add-form__label" htmlFor="title">
           Title
         </label>
@@ -177,23 +180,38 @@ function AddMilestone() {
         )}
 
         <label className="add-form__label" htmlFor="description">
-          Description
+          Notes
         </label>
-        <input
-          className="add-form__input"
+        <textarea
+          className="add-form__input add-form__input--text"
           type="text"
           id="description"
           name="description"
           placeholder="add more for this great moment"
           value={formData.description}
           onChange={handleChange}
-        />
+          row='4'
+        ></ textarea >
         {error.description && (
           <p className="add-form__input--error">
             <MdError />
             {error.description}
           </p>
         )}
+
+<label className="add-form__label" htmlFor="people">
+          People
+        </label>
+
+        <input
+          className="add-form__input"
+          type="people"
+          id="people"
+          name="people"
+          placeholder="Who Was There.."
+          value={formData.people}
+          onChange={handleChange}
+        />
 
         <label className="add-form__label" htmlFor="date">
           Date

@@ -51,13 +51,17 @@
       font-size: 0.7rem;
       margin-bottom: 5px;
     }
+
+    &--text{
+      height: 5rem;
+    }
   }
 
   &__label {
     color: $hero-text-color;
     font-size: 12px;
     padding-left: 8px;
-    font-weight: 600;
+    font-weight: 400;
     margin-top: 16px;
   }
 
