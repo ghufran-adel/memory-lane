@@ -45,7 +45,7 @@ npm start
 
 ## Screenshots
 
-![Login page](https://github.com/ghufran-adel/memory-lane-capstone/assets/101430061/f4edbeeb-11fc-4bd8-bb04-bee9daf654dd)![Signup page](https://github.com/ghufran-adel/memory-lane-capstone/assets/101430061/ba5c9e25-5a85-4c60-b888-184f78e8ab0b)
+![Login page](https://github.com/ghufran-adel/memory-lane-capstone/assets/101430061/f4edbeeb-11fc-4bd8-bb04-bee9daf654dd)     ![Signup page](https://github.com/ghufran-adel/memory-lane-capstone/assets/101430061/ba5c9e25-5a85-4c60-b888-184f78e8ab0b)
 
 
 
