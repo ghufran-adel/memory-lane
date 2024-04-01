@@ -44,7 +44,7 @@ npm start
 ```
 - **Example User**: 
   - **Username**: ghufran@memory.lane
-  - **Password**: $2b$10$rjIj0BON..bhhmtUHyJd/e2tzlD9BACwRPKqMtIJRKbLUF9HUHwEq
+  - **Password**: 1234
   - **Note**: This example user account is limited to viewing functionalities. If you would like to use all functions you need to sign up new account .
     
 
