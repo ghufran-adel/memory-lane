@@ -36,12 +36,17 @@ MemoryLane is an app designed to help parents craft personalized memories of the
 ### Developer Environment
 
 ```bash
-git clone <https://github.com/mashalnaeem/mashal-naeem-quizit-api>
+git clone <[https://github.com/ghufran-adel/memory-lane-capstone]>
 cd <project-directory>
 npm install
 npm start
 
 ```
+- **Example User**: 
+  - **Username**: ghufran@memory.lane
+  - **Password**: $2b$10$rjIj0BON..bhhmtUHyJd/e2tzlD9BACwRPKqMtIJRKbLUF9HUHwEq
+  - **Note**: This example user account is limited to viewing functionalities. If you would like to use all functions you need to sign up new account .
+    
 
 ## Screenshots
 
