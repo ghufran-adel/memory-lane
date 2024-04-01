@@ -45,29 +45,8 @@ npm start
 
 ## Screenshots
 
-![Login page](https://github.com/ghufran-adel/memory-lane-capstone/assets/101430061/f4edbeeb-11fc-4bd8-bb04-bee9daf654dd)     ![Signup page](https://github.com/ghufran-adel/memory-lane-capstone/assets/101430061/ba5c9e25-5a85-4c60-b888-184f78e8ab0b)
 
-
-
-![Home Page /Profile Page](https://github.com/ghufran-adel/memory-lane-capstone/assets/101430061/ce916f4d-9043-4bb3-adb8-6f7f1acef389)
-
-
-![Milestone page](https://github.com/ghufran-adel/memory-lane-capstone/assets/101430061/8de63e7b-2b98-4c8b-aec9-11ca38240b5a)
-
-![Milestone page 2](https://github.com/ghufran-adel/memory-lane-capstone/assets/101430061/fad0f29d-c2a3-48a0-b37c-a2139064e14d)
-
-![Create Milestone page](https://github.com/ghufran-adel/memory-lane-capstone/assets/101430061/0337d5b7-636c-409f-8225-0959d9993a63)
-
-![Settings page](https://github.com/ghufran-adel/memory-lane-capstone/assets/101430061/df593c61-e1e8-4ce6-840d-fcc7791e67ef)
-
-![Delete Modal](https://github.com/ghufran-adel/memory-lane-capstone/assets/101430061/50992770-c324-476e-b81f-a4369d861e98)
-
-![Add/Edit Modal](https://github.com/ghufran-adel/memory-lane-capstone/assets/101430061/20d07c0f-5ef0-4372-9995-947567d25fec)
-
-
-
-
-
+[screen-capture (14).webm](https://github.com/ghufran-adel/memory-lane-capstone/assets/101430061/bbacda43-3f79-4ad5-a7f8-f5b6c48989a7)
 
 
 ## Lessons Learned & Next Steps
