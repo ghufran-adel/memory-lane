@@ -26,9 +26,9 @@ MemoryLane is an app designed to help parents craft personalized memories of the
 - **User Authentication**: Users can sign up, log in, and log out securely to access their personalized memories.
 - **User Profiles**: Each user can create, edit, and delete profiles for their children, containing personal information and a collection of memories.
 - **Create Memories**: Users can document key milestones, memorable moments, and developmental achievements for their children.
-- **Upload Media**: Users can upload photos and videos to accompany their memories, enhancing their storytelling experience.
+- **Upload Media**: Users can upload photos & audioes and videos to accompany their memories, enhancing their storytelling experience.
 - **Location Tagging**: Memories can be tagged with location information, allowing users to remember where special moments occurred.
-- **Search and Filter**: Users can search and filter memories based on various criteria, such as date, milestone type, and location.
+- **Search and Filter**: Users can search and filter memories based on title.
 - **Notifications (Future Enhancement)**: Planned feature to implement notification functionality for milestone reminders, helping users stay organized and never miss a special moment.
 
 ## Installation
