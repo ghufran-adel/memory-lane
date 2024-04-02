@@ -1,0 +1,23 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/global" as *;
+
+
+.search {
+    width: 100%;
+    padding: 3rem 2rem 1rem 2rem;
+
+    &__input {
+        padding: 0.5rem;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+
+        border: solid 1px $hover-color;
+        border-radius: 10px;
+        width: 100%;
+
+        &:focus {
+            outline: none;
+            border: 1px solid $btn-color;
+        }
+    }
+}
