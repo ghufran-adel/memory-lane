@@ -1,5 +1,6 @@
 import "./MilestonCard.scss";
 import { MdAccessTime } from "react-icons/md";
+import { AiFillAudio } from "react-icons/ai";
 
 function MilestoneCard({ title, description, media, date }) {
   // Parse the date string
@@ -18,11 +19,29 @@ function MilestoneCard({ title, description, media, date }) {
   return (
     <div className="milestone-card">
       <div className="milestone-card__media">
-        <img
-          className="milestone-card__image"
-          src={`${process.env.REACT_APP_BASE_URL}${media[0].media_url}`}
-          alt={title}
-        />
+        {/* if media is video */}
+        {media[0].media_type === "video" && (
+          <video className="milestone-card__image" controls>
+            <source
+              src={`${process.env.REACT_APP_BASE_URL}${media[0].media_url}`}
+            />
+          </video>
+        )}
+        {/* if media is image */}
+        {media[0].media_type === "image" && (
+          <img
+            className="milestone-card__image"
+            src={`${process.env.REACT_APP_BASE_URL}${media[0].media_url}`}
+            alt={title}
+          />
+        )}
+
+        {/* if media is audio */}
+        {media[0].media_type === "audio" && (
+          <div className="milestone-card__image milestone-card__image--audio">
+            <AiFillAudio />
+          </div>
+        )}
       </div>
       <div className="milestone-card__details">
         <div className="milestone-card__date">

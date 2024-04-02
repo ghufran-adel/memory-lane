@@ -169,7 +169,7 @@ function AddMilestone() {
           type="file"
           id="images"
           onChange={handleImageChange}
-          accept="image/*"
+          accept="image/* , video/* , audio/*"
           multiple
         />
         {error.media && (

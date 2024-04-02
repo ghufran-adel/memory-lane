@@ -66,7 +66,7 @@ function OneMilestonPage() {
 
         {/* slider */}
         <ImageSlider
-          images={milestoneDetails.media}
+          media={milestoneDetails.media}
           title={milestoneDetails.title}
         />
         {/* delete */}
