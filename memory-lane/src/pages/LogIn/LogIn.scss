@@ -15,11 +15,11 @@
   @include desktop;
 
   &__box {
-    font-family: "Itim", cursive;
-    padding: 2rem;
+    opacity: 0.5;
+
     font-size: 13px;
     background-image: url("../../assets/pattern_pastel_baby.jpg");
-    background-size: 2000px 2000px;
+    background-size: 3000px 3000px;
     background-repeat: no-repeat;
     position: relative;
     height: 100%;
@@ -29,15 +29,34 @@
   }
 
   &__content {
-    color: #7e7e7e;
+    font-family: "Itim", cursive;
+    padding: 1rem 2rem;
+    color: $hero-text-color;
+    position: absolute;
+    top: 0;
+    z-index: 2;
   }
 
   &__header {
+    font-size: 2rem;
     font-weight: 600;
   }
 
   &__subheader {
+    position: relative;
+    font-size: 20px;
     font-weight: 400;
+    width: fit-content;
+
+    &--pink {
+      top: 30%;
+      left: 0;
+      position: absolute;
+      background-color: #ffe9f1;
+      width: 100%;
+      height: 0.7rem;
+      z-index: -1;
+    }
   }
 
   &__text {

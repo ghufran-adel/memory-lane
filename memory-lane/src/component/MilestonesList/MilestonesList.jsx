@@ -1,12 +1,12 @@
-import './MilestonesList.scss';
+import "./MilestonesList.scss";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useNavigate ,useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import Loading from "../../component/Loading/Loading";
 import MilestonCard from "../MilestonCard/MilestonCard";
-import Search from '../Search/Search';
+import Search from "../Search/Search";
 
 function MilestonesList() {
   const [milestones, setMilestones] = useState([]);
@@ -45,7 +45,7 @@ function MilestonesList() {
 
   // Search function to filter milestones by title
   const searchMilestones = (query) => {
-    const filtered = milestones.filter(milestone =>
+    const filtered = milestones.filter((milestone) =>
       milestone.title.toLowerCase().includes(query.toLowerCase())
     );
     setFilteredMilestones(filtered);
@@ -62,23 +62,26 @@ function MilestonesList() {
   }
 
   return (
-    <div className='milestones'>
-     <Search onSearch={searchMilestones} />
+    <div className="milestones">
+      <Search onSearch={searchMilestones} />
       <section className="milestones__box">
-        {filteredMilestones 
-        .slice()
-        .sort((a, b) => new Date(b.date) - new Date(a.date)) //to order according to the create date
-        .map((milestone) => (
-          
-          <Link to={`milestones/${milestone.id}`} key={milestone.id} className="milestone__item">
-            <MilestonCard
-              title={milestone.title}
-              description={milestone.description}
-              media={milestone.media}
-              date={milestone.date}
-            />
-          </Link>
-        ))}
+        {filteredMilestones
+          .slice()
+          .sort((a, b) => new Date(b.date) - new Date(a.date)) //to order according to the create date
+          .map((milestone) => (
+            <Link
+              to={`milestones/${milestone.id}`}
+              key={milestone.id}
+              className="milestone__item"
+            >
+              <MilestonCard
+                title={milestone.title}
+                description={milestone.description}
+                media={milestone.media}
+                date={milestone.date}
+              />
+            </Link>
+          ))}
       </section>
     </div>
   );

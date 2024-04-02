@@ -1,13 +1,13 @@
-import  { useState } from 'react';
-import './Search.scss'
+import { useState } from "react";
+import "./Search.scss";
 
 function Search({ onSearch }) {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleChange = (event) => {
     const query = event.target.value;
     setSearchQuery(query);
-    onSearch(query); 
+    onSearch(query);
   };
 
   return (
