@@ -64,7 +64,7 @@ During the development process, I encountered various challenges and learned val
 
 ### Next Steps
 Moving forward, the next steps for the frontend development include:
-- Continuation of efforts to implement navigation functionality.
+- Continuation of efforts to implement notification functionality.
 - Deployment of the site to make it accessible to users.
 - Continuous improvement and refinement of the user interface and overall user experience based on feedback and testing.
 
